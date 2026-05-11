@@ -8,6 +8,10 @@ terraform {
   required_version = ">=1.2"
 }
 
+provider "aws" { 
+  region = "sa-east-1"
+}
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -20,10 +24,10 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = aws_ami.ubuntu.id
+  ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
-  tags {
+  tags = {
     Name = "learn-terraform"
   }
 }
