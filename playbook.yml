@@ -1,0 +1,31 @@
+- name: "Terraform learn"
+  hosts: terraform_ansible
+
+  tasks:
+    
+    - name: File create
+      copy:
+        dest: /home/ubuntu/index.html
+        content: |
+          <head>
+            <title> Coffee search website </title> 
+          </head>
+          <h1>Hello World!</h1>
+          <hr/>
+          <h2>I'm a Teapot</h2>
+          <pre>
+                       ;,'
+               _o_    ;:;'
+           ,-.'---`.__ ;
+          ((j`=====',-'
+           `-\     /
+              `-=-'     hjw
+          </pre>
+          <hr/>
+          <i>Made with<s>out</s> love with Terraform</i>
+
+    - name: Start httpd server
+      shell: "nohup busybox httpd -f -p 8080 &"
+
+
+

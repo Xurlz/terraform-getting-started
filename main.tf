@@ -27,30 +27,6 @@ resource "aws_instance" "app_server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   key_name      = "treinamento-ci-cd-api-go"
-  user_data     = <<-EOF
-                  #!/usr/bin/env bash
-                  cd /home/ubuntu
-                  cat <<-"EOL" > index.html
-                  <head>
-                    <title> Coffee search website </title> 
-                  </head>
-                  <h1>Hello World!</h1>
-                  <hr/>
-                  <h2>I'm a Teapot</h2>
-                  <pre>
-                               ;,'
-                       _o_    ;:;'
-                   ,-.'---`.__ ;
-                  ((j`=====',-'
-                   `-\     /
-                      `-=-'     hjw
-                  </pre>
-                  <hr/>
-                  <i>Made with<s>out</s> love with Terraform</i>
-
-                  EOL
-                  nohup busybox httpd -f -p 8080 index.html > /dev/null &
-                  EOF
                   
   tags = {
     Name = "learn-terraform"
