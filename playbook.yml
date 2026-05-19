@@ -18,7 +18,9 @@
         name:
           - django
           - djangorestframework
-      
 
-
+    - name: Project Startup
+      shell: |
+        . /home/ubuntu/venv/activate
+        django-admin startproject coffee_pot .
 
