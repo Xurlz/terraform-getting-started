@@ -24,3 +24,9 @@
         . /home/ubuntu/venv/activate
         django-admin startproject coffee_pot .
 
+    - name: Start server
+      shell: |
+        cd /home/ubuntu
+        . venv/bin/activate
+        nohup python manage.py runserver 0.0.0.0:8000 &
+
