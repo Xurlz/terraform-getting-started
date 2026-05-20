@@ -25,14 +25,8 @@
 
         . /home/ubuntu/venv/bin/activate
 
-        test ! -d coffee_pot && django-admin startproject coffee_pot .
+        django-admin startproject coffee_pot .
       ignore_errors: true
-
-    - name: Start server
-      shell: |
-        cd /home/ubuntu
-        . venv/bin/activate
-        nohup python manage.py runserver 0.0.0.0:8000 &
 
     - name: Update allowed hosts
       lineinfile:
@@ -40,4 +34,10 @@
         regexp: 'ALLOWED_HOSTS'
         line: 'ALLOWED_HOSTS = ["*"]'
         backrefs: yes
+
+    - name: Start server
+      shell: |
+        cd /home/ubuntu
+        . venv/bin/activate
+        nohup python manage.py runserver 0.0.0.0:8000 &
 
