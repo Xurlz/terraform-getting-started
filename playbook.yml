@@ -25,7 +25,8 @@
 
         . /home/ubuntu/venv/bin/activate
 
-        test ! -d coffee_pot && django-admin startproject coffee_pot . || return 0
+        test ! -d coffee_pot && django-admin startproject coffee_pot .
+      ignore_errors: true
 
     - name: Start server
       shell: |
