@@ -21,8 +21,11 @@
 
     - name: Project Startup
       shell: |
-        . /home/ubuntu/venv/activate
-        django-admin startproject coffee_pot .
+        cd /home/ubuntu
+
+        . /home/ubuntu/venv/bin/activate
+
+        test ! -d coffee_pot && django-admin startproject coffee_pot . || return 0
 
     - name: Start server
       shell: |
